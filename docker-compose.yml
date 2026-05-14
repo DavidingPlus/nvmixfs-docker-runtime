@@ -4,3 +4,4 @@ services:
       context: .
       args:
         KERNEL_VERSION: ${KERNEL_VERSION}
+    image: nvmixfs-docker-runtime:${KERNEL_VERSION}
