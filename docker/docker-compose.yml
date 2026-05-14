@@ -1,7 +1,7 @@
 services:
   app:
     build:
-      context: .
+      context: ..
       args:
         KERNEL_VERSION: ${KERNEL_VERSION}
     image: nvmixfs-docker-runtime:${KERNEL_VERSION}
