@@ -42,10 +42,23 @@ jobs:
       - name: Run Docker Compose
         uses: hoverkraft-tech/compose-action@d2bee4f07e8ca410d6b196d00f90c12e7d48c33a # v2.6.0
         with:
-          compose-file: ./docker-compose.ci.yml"
+          compose-file: "./docker-compose.ci.yml"
 
       - name: Build The Docker Image
         run: docker compose build
 
+      - name: Load .env
+        run: |
+          cat .env >> $GITHUB_ENV
+
+          echo $KERNEL_VERSION
+          echo $IMAGE_NAME
+
+      - name: Add Latest Tag
+        run: |
+          docker tag ${IMAGE_NAME}:${KERNEL_VERSION} ${IMAGE_NAME}:latest
+
       - name: Push Docker Image
-        run: docker compose push
+        run: |
+          docker push ${IMAGE_NAME}:${KERNEL_VERSION}
+          docker push ${IMAGE_NAME}:latest
