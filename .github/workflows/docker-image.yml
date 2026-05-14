@@ -22,5 +22,10 @@ jobs:
       with:
         submodules: recursive
 
+    - name: Run Docker Compose
+      uses: hoverkraft-tech/compose-action@d2bee4f07e8ca410d6b196d00f90c12e7d48c33a # v2.6.0
+      with:
+        compose-file: "./docker/docker-compose.yml"
+
     - name: Build The Docker Image
       run: docker compose build

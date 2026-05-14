@@ -1,0 +1,7 @@
+services:
+  app:
+    build:
+      context: .
+      args:
+        KERNEL_VERSION: ${KERNEL_VERSION}
+    image: ${IMAGE_NAME}:${KERNEL_VERSION}
