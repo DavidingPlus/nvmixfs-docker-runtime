@@ -4,8 +4,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV XMAKE_ROOT=y
 ENV PATH="/root/.local/bin:${PATH}"
 
-# 让 KERNEL_VERSION 可以在构建镜像时传入
-ARG KERNEL_VERSION=5.4.0-216-generic
+# 由 .env 中的环境变量指定。
+ARG KERNEL_VERSION
 
 WORKDIR /app
 
